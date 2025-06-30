@@ -1,4 +1,3 @@
 l = list(input().split())
-result = l.reverse()
-for i in result:
+for i in l.reverse():
     print(i, end='')
