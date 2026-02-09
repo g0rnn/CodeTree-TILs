@@ -8,7 +8,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             int cnt = sc.nextInt();
             int pos = sc.nextInt();
-            candies[pos] = cnt;
+            candies[pos] += cnt;
         }
         
         int max = Integer.MIN_VALUE;
