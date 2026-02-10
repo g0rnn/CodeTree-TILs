@@ -15,19 +15,20 @@ public class Main {
         comb2[2] = sc.nextInt();
         
         int ans = 0;
-        for (int i = 1; i < n; i++) 
-            for (int j = 1; j < n; j++) 
-                for (int k = 1; k < n; k++) 
+        for (int i = 1; i <= n; i++) 
+            for (int j = 1; j <= n; j++) 
+                for (int k = 1; k <= n; k++) 
                     if (isPossible(comb, i, j, k) || isPossible(comb2, i, j, k)) ans++;
         System.out.println(ans);
     }
 
     private static boolean isPossible(int[] comb, int a, int b, int c) {
         int diff = Math.abs(comb[0]-a);
-        int diff = Math.abs(comb[0]-a);
+        int diff2 = Math.abs(comb[1]-b);
+        int diff3 = Math.abs(comb[2]-c);
         if (Math.min(diff, n-diff) <= 2) 
-        if (Math.abs(comb[1]-b) <= 2 || comb[1]-b+n <= 2) 
-        if (Math.abs(comb[2]-c) <= 2 || comb[2]-c+n <= 2) return true;
+        if (Math.min(diff2, n-diff2) <= 2) 
+        if (Math.min(diff3, n-diff3) <= 2) return true;
         return false;
     }
 }
