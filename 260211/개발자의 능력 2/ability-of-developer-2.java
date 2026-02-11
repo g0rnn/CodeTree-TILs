@@ -25,7 +25,7 @@ public class Main {
         System.out.println(minDiff);
     }
 
-    private static int idff(int i, int j, int k, int l) {
+    private static int diff(int i, int j, int k, int l) {
         int team1 = arr[i]+arr[j];
         int team2 = arr[k]+arr[l];
         int team3 = totalSum - team1-team2;
