@@ -20,7 +20,8 @@ public class Main {
                 }
             }
         }
-        System.out.println(minDiff);
+        if (minDiff == Integer.MAX_VALUE) System.out.println(-1);
+        else System.out.println(minDiff);
     }
 
     private static int diff(int i, int j, int k) {
