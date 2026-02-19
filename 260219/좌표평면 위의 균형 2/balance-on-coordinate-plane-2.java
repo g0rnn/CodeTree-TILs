@@ -25,7 +25,7 @@ public class Main {
                 }
 
                 int max = q[0];
-                for (int k=1;k<4;k++) max=Math.max(max, q[i]);
+                for (int k=1;k<4;k++) max=Math.max(max, q[k]);
                 result = Math.min(result, max);
             }
         }
