@@ -14,7 +14,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0 ;j < n; j++) {
                 int linex = x[i] + 1;
-                int liney = y[i] + 1;
+                int liney = y[j] + 1;
 
                 int[] q = new int[4];
                 for (int k=0; k < n; k++) {
