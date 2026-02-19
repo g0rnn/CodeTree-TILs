@@ -19,7 +19,7 @@ public class Main {
 
     private static boolean dfs(List<int[]> points, int line) {
         if (points.isEmpty()) return true;
-        if (line == 3) return true;
+        if (line == 3) return false; // 점이 남았는데 쓸 수 있는 선이 없음
 
         int[] cur = points.get(0);
         List<int[]> remaining = new ArrayList<>();
