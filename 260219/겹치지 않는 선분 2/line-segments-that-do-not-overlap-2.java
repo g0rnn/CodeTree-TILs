@@ -11,20 +11,21 @@ public class Main {
         }
         
         int cnt = 0;
-        boolean[] visited = new boolean[n];
         for (int i = 0; i < n; i++) {
+
+            boolean flag = false;
             for (int j = i+1; j < n; j++) {
-                if (i == j || visited[j]) continue;
+                if (i == j) continue;
 
                 if (cross(x1, x2, i, j)) {
-                    visited[j] = true;
-                    cnt++;
+                    flag=true;
+                    break;
                 }
             }
-            visited[i] = true;
+            if(!flag) cnt++;
         }
 
-        System.out.println(cnt+1);
+        System.out.println(cnt);
     }
 
     private static boolean cross(int[] x1, int[] x2, int i, int j) {
