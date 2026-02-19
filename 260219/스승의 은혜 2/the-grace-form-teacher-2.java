@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -11,16 +11,19 @@ public class Main {
         
         int result = 0;
         for (int i =0; i < n ;i++) {
-            int remain = b;
-            int cnt = 0;
-            for (int j=0; j < n; j++) {
-                int point = (i==j) ? p[j]/2 : p[j];
-                if (remain - point >= 0) {
-                    cnt++; remain -= point;
-                }
-                else break;
+            int[] tmp = new int[1000];
+            for (int j = 0; j < n; j++) tmp[j] = p[j];
+            tmp[i] /= 2;
+
+            Arrays.sort(tmp, 0, n);
+
+            int stu =0, money =0;
+            for (int j=0; j< n; j++) {
+                if (money + tmp[j] > b) break;
+                money += tmp[i];
+                stu++;
             }
-            result = Math.max(result, cnt);
+            result = Math.max(result, stu);
         }
         System.out.println(result);
     }
