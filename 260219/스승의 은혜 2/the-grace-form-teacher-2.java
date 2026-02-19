@@ -20,7 +20,7 @@ public class Main {
             int stu =0, money =0;
             for (int j=0; j< n; j++) {
                 if (money + tmp[j] > b) break;
-                money += tmp[i];
+                money += tmp[j];
                 stu++;
             }
             result = Math.max(result, stu);
