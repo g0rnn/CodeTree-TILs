@@ -36,7 +36,7 @@ public class Main {
                 i++;
             }
             if (cnt+1 >= m) return true;
-            prev = grid[r][i];
+            if (i != n) prev = grid[r][i];
             cnt =0;
         }
         if (cnt+1 >= m)return true;
@@ -52,10 +52,10 @@ public class Main {
                 i++;
             }
             if (cnt+1 >= m) return true;
-            prev = grid[i][c];
+            if (i != n) prev = grid[i][c];
             cnt=0;
         }
-        if (cnt+1 >= m)return true;
+        if (cnt+1 >= m) return true;
         return false;
     }
 }
