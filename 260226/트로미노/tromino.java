@@ -31,10 +31,10 @@ public class Main {
         for (int i = 0; i < n ;i++) {
             for (int j = 0; j < m; j++) {
                 for (int[] o : offset ) {
-                    int nx = i + o[0];
-                    int ny = j + o[1];
-                    int nx2 = i + o[2];
-                    int ny2 = j + o[3];
+                    int nx = j + o[0];
+                    int ny = i + o[1];
+                    int nx2 = j + o[2];
+                    int ny2 = i + o[3];
 
                     if (nx < 0 || ny < 0 || nx >= m || ny >= n) continue;
                     if (nx2 < 0 || ny2 < 0 || nx2 >= m || ny2 >= n) continue;
