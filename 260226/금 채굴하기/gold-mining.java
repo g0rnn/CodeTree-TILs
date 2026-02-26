@@ -30,7 +30,7 @@ public class Main {
     // 현재위치에서 생성할 수 있는 모든 마름로를 확인하고 검사
     private static int getGold(int x, int y) {
         int max = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             int cnt = rhombus(i, x, y); // 금을 몇개 캘 수 있는지
             if ((i*i + (i+1)*(i+1)) <= cnt*m) {
                 max = Math.max(max, cnt);
