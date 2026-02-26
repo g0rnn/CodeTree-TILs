@@ -32,7 +32,7 @@ public class Main {
         int max = -1;
         for (int i = 0; i < n; i++) {
             int cnt = rhombus(i, x, y); // 금을 몇개 캘 수 있는지
-            if ((i*i + (i+1)*(i+1)) <= cnt*m) {
+            if ((i*i + (i+1)*(i+1)) < cnt*m) {
                 max = Math.max(max, cnt);
             }
         }
