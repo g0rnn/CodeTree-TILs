@@ -57,28 +57,28 @@ public class Main {
         int sum = 0;
         int nx = x, ny = y;
 
-        for (int i = 1; i < len1; i++) {
+        for (int i = 0; i < len1; i++) {
             nx += offset[0][0];
             ny += offset[0][1];
             if (!inRange(nx, ny)) return -1;
             sum += grid[ny][nx];
         }
 
-        for (int i = 1; i < len2; i++) {
+        for (int i = 0; i < len2; i++) {
             nx += offset[1][0];
             ny += offset[1][1];
             if (!inRange(nx, ny)) return -1;
             sum += grid[ny][nx];
         }
 
-        for (int i = 1; i < len1; i++) {
+        for (int i = 0; i < len1; i++) {
             nx += offset[2][0];
             ny += offset[2][1];
             if (!inRange(nx, ny)) return -1;
             sum += grid[ny][nx];
         }
 
-        for (int i = 1; i < len2; i++) {
+        for (int i = 0; i < len2; i++) {
             nx += offset[3][0];
             ny += offset[3][1];
             if (!inRange(nx, ny)) return -1;
