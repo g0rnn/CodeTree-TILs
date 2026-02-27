@@ -28,31 +28,6 @@ public class Main {
         System.out.println(max);
     }
 
-    private static int dist(int x, int y) {
-        int moved = 0;
-        int nx = x;
-        int ny = y;
-        int sum = 0;
-
-        for (int d = 0; d < 4; d++) {
-            while (true) {
-                nx += offset[d][0];
-                ny += offset[d][1];
-                if (!inRange(nx, ny)) break;
-                
-                sum += grid[ny][nx];
-                moved++;
-                //System.out.println("("+nx+", "+ny+")");
-            }
-            nx -= offset[d][0];
-            ny -= offset[d][1];
-            if (moved < 1) return 0;
-            else moved = 0;
-        }
-
-        return sum;
-    }
-
     private static int calc(int x, int y, int len1, int len2) {
         int sum = 0;
         int nx = x, ny = y;
