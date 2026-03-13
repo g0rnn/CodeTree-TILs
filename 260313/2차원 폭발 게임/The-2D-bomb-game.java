@@ -36,17 +36,14 @@ public class Main {
 
     private static void bomb(int m) {
         for (int c = 0; c < n; c++) {
-            for (int r = 0; r < n-1; r++) {
-                if (grid[r][c] == grid[r+1][c]) {
-                    int cnt = 0;
-                    int prev = r;
-                    while (r < n && grid[r][c] == grid[prev][c]) {cnt++; r++;}
-                    if (cnt >= m)
-                        for (int i = prev; i < r; i++) grid[i][c] = 0;
-                    r--;
-                }
+            for (int r = 0; r < n; r++) {
+                int cnt = 0;
+                int prev = r;
+                while (r < n && grid[r][c] == grid[prev][c]) {cnt++; r++;}
+                if (cnt >= m)
+                    for (int i = prev; i < r; i++) grid[i][c] = 0;
+                r--;
             }
-            
             /*
             int prev = r; 
                     while (++r < n && grid[r][c] == grid[prev][c]) {
