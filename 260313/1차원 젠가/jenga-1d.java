@@ -7,29 +7,35 @@ public class Main {
         for (int i = 0; i < n; i++) {
             blocks[i] = sc.nextInt();
         }
-        int s1 = sc.nextInt()-1;
-        int e1 = sc.nextInt();
-        int s2 = sc.nextInt()-1;
-        int e2 = sc.nextInt();
         
-        int[] tmp = new int[n];
-        int tmpIdx = 0;
-        for (int i = 0; i < n; i++) {
-            if (!(s1 <= i && i < e1)) tmp[tmpIdx++] = blocks[i];
+        for(int k = 0; k < 2; k++) {
+            int s = sc.nextInt()-1; // inclusive
+            int e = sc.nextInt();   // exclusive
+            pull(blocks, s, e);
+            //System.out.println(Arrays.toString(blocks));
         }
-        blocks = tmp.clone();
-        Arrays.fill(tmp, 0);
 
-        tmpIdx = 0;
-        for (int i = 0; i < n; i++) {
-            if (!(s2 <= i && i < e2)) tmp[tmpIdx++] = blocks[i];
-        }
-        
+        StringBuilder sb= new StringBuilder();
         int cnt = 0;
-        for (int i = 0 ;i < n; i++)
-            if (tmp[i]!=0) cnt++;
+        for (int i = 0; i < n; i++) 
+            if (blocks[i] != 0) {
+                sb.append(blocks[i]).append('\n');
+                cnt++;
+            }
         System.out.println(cnt);
-        for (int i = 0 ;i < n; i++)
-            if (tmp[i] != 0) System.out.println(tmp[i]);
+        System.out.println(sb);
+    }
+
+    private static void pull(int[] blocks, int s, int e) {
+        int write = 0;
+        for (int i = 0; i < blocks.length; i++) {
+            if (s <= i && i < e) continue;
+            blocks[write] = blocks[i];
+            if (write != i) blocks[i] = 0;
+            write++;
+        }
+        while (write < blocks.length) {
+            blocks[write++] = 0;
+        }
     }
 }
