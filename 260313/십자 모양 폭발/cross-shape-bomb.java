@@ -49,8 +49,8 @@ public class Main {
 
             while (inRange(nx, ny) && range-->0) {
                 grid[ny][nx] = 0;
-                nx = c + offset[d][0];
-                ny = r + offset[d][1];
+                nx += offset[d][0];
+                ny += offset[d][1];
             }
         }
     }
