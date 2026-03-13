@@ -17,31 +17,26 @@ public class Main {
                 grid[i][j] = sc.nextInt();
         
         while (k-- > 0) {
-            bomb(m);
-            //for(int i =0; i < n; i++) System.out.println(Arrays.toString(grid[i]));
-            //System.out.println();
-            pull();
-            //for(int i =0; i < n; i++) System.out.println(Arrays.toString(grid[i]));
-            //System.out.println();
+            while (bomb()>0) {
+                pull();
+            }
             rotate();
-            //for(int i =0; i < n; i++) System.out.println(Arrays.toString(grid[i]));
-            //System.out.println();
             pull();
-            //for(int i =0; i < n; i++) System.out.println(Arrays.toString(grid[i]));
-            //System.out.println();
-        }        
+        }
 
         System.out.println(count());
     }
 
-    private static void bomb(int m) {
+    private static int bomb() {
+        int bombed = 0;
         for (int c = 0; c < n; c++) {
             for (int r = 0; r < n; r++) {
+                if (grid[r][c] == 0) continue;
                 int cnt = 0;
                 int prev = r;
                 while (r < n && grid[r][c] == grid[prev][c]) {cnt++; r++;}
                 if (cnt >= m)
-                    for (int i = prev; i < r; i++) grid[i][c] = 0;
+                    for (int i = prev; i < r; i++) {grid[i][c] = 0; bombed++;}
                 r--;
             }
             /*
@@ -53,6 +48,7 @@ public class Main {
                     r--;
             */
         }
+        return bombed;
     }
 
     private static void pull() {
