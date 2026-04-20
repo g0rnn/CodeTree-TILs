@@ -31,12 +31,12 @@ public class Main {
             }
 
             // 시작점 예외 처리 (시작점이 설정한 low보다 작으면 불가능)
-            if (grid[0][0] < low) continue;
+            if (grid[0][0] < low) break;
             dp[0][0] = grid[0][0];
             
             for (int i = 1; i < n; i++) {
-                dp[i][0] = Math.max(dp[i-1][0], grid[i][0]);
-                dp[0][i] = Math.max(dp[0][i-1], grid[0][i]);
+                dp[i][0] = (grid[i][0] < low) ? INF : Math.max(dp[i-1][0], grid[i][0]);
+                dp[0][i] = (grid[0][i] < low) ? INF : Math.max(dp[0][i-1], grid[0][i]);
             }
 
             for (int i = 1; i < n; i++) {
