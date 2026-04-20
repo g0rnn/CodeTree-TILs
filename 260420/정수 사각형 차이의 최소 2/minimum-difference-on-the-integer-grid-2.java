@@ -12,8 +12,8 @@ public class Main {
         n = sc.nextInt();
 
         TreeSet<Integer> nums = new TreeSet<>();
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 grid[i][j] = sc.nextInt();
                 nums.add(grid[i][j]);
             }
@@ -24,34 +24,34 @@ public class Main {
         // 각 숫자를 최솟값(low)으로 가정하고 반복
         for (int low : nums) {
             // dp 테이블 초기화
-            for (int i = 1; i <= n; i++) {
-                for (int j = 1; j <= n; j++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
                     dp[i][j] = INF;
                 }
             }
 
             // 시작점 예외 처리 (시작점이 설정한 low보다 작으면 불가능)
-            if (grid[1][1] < low) continue;
-            dp[1][1] = grid[1][1];
+            if (grid[0][0] < low) continue;
+            dp[0][0] = grid[0][0];
+            
+            for (int i = 1; i < n; i++) {
+                dp[i][0] = Math.max(dp[i-1][0], grid[i][0]);
+                dp[0][i] = Math.max(dp[0][i-1], grid[0][i]);
+            }
 
-            for (int i = 1; i <= n; i++) {
-                for (int j = 1; j <= n; j++) {
-                    if (i == 1 && j == 1) continue;
+            for (int i = 1; i < n; i++) {
+                for (int j = 1; j < n; j++) {
                     if (grid[i][j] < low) continue; // low보다 작으면 이동 불가
-
-                    int prevMin = INF;
-                    if (i > 1) prevMin = Math.min(prevMin, dp[i - 1][j]);
-                    if (j > 1) prevMin = Math.min(prevMin, dp[i][j - 1]);
-
-                    if (prevMin != INF) {
-                        dp[i][j] = Math.max(grid[i][j], prevMin);
-                    }
+                    dp[i][j] = Math.max(
+                        grid[i][j], 
+                        Math.min(dp[i-1][j], dp[i][j-1])
+                    );
                 }
             }
 
             // 목적지에 도달 가능한 경우 차이 계산
-            if (dp[n][n] != INF) {
-                ans = Math.min(ans, dp[n][n] - low);
+            if (dp[n-1][n-1] != INF) {
+                ans = Math.min(ans, dp[n-1][n-1] - low);
             }
         }
 
